@@ -1,3 +1,5 @@
+// Wait for the DOM to finish loading before running the game
+// Get the button elements and add event listeners to them
 
 document.addEventListener("DOMContentLoaded", function() {
     let buttons = document.getElementsByTagName("button"); 
@@ -23,7 +25,10 @@ document.addEventListener("DOMContentLoaded", function() {
 
 });
 
-
+/**
+ * The main game "loop", called when the script is first loaded
+ * and after the user's answer has been processed
+ */
 function runGame(gameType) {
 
     document.getElementById("answer-box").value = "";
@@ -44,6 +49,10 @@ function runGame(gameType) {
     }
 }
 
+/**
+ * Checks the answer against the first element in
+ * the returned calculateCorrectAnswer array
+ */
 function checkAnswer() {
 
     let userAnswer = parseInt(document.getElementById("answer-box").value);
@@ -83,6 +92,9 @@ function calculateCorrectAnswer() {
     }
 }
 
+/**
+ * Gets the current score from the DOM and increments it by 1
+ */
 function incrementScore() {
 
     let oldScore = parseInt(document.getElementById("score").innerText);
@@ -90,6 +102,9 @@ function incrementScore() {
 
 }
 
+/**
+ * Gets the current tally of incorrect answers from the DOM and increments it by 1
+ */
 function incrementWrongAnswer() {
     let oldScore = parseInt(document.getElementById("incorrect").innerText);
     document.getElementById("incorrect").innerText = ++oldScore;
